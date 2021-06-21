@@ -16,6 +16,7 @@ import {Error404Component} from './errors/404.component';
 import {EventsAppComponent} from './events-app.component';
 import {RouterModule} from '@angular/router';
 import {appRoutes} from './routes';
+import {LoginComponent} from './user/login.component';
 @NgModule({
   declarations: [
     EventsAppComponent,

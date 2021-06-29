@@ -4,16 +4,16 @@
   <form autocomplete="off"  #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
     <div class="form-group" >
       <label for="userName">User Name:</label>
-      <input id="userName" (ngModel)="userName" id="userName" name="userName" type="text" class="form-control" placeholder="User Name..." />
+      <input id="userName" required [(ngModel)]="userName" id="userName" name="userName" type="text" class="form-control" placeholder="User Name..." />
     </div>
     <div class="form-group" >
       <label for="password">Password:</label>
-      <input id="password" type="password"
+      <input id="password" required type="password"
              (ngModel)="password" id="password" name="password"
              class="form-control"placeholder="Password..." />
     </div>
 
-    <button type="submit" class="btn btn-primary">Login</button>
-    <button type="button" class="btn btn-default">Cancel</button>
+    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+    <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
   </form>
 </div>

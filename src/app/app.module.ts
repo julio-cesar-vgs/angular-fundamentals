@@ -17,6 +17,7 @@ import {EventsAppComponent} from './events-app.component';
 import {RouterModule} from '@angular/router';
 import {appRoutes} from './routes';
 import {LoginComponent} from './user/login.component';
+import {AuthService} from './user/auth.service';
 @NgModule({
   declarations: [
     EventsAppComponent,
@@ -36,6 +37,7 @@ import {LoginComponent} from './user/login.component';
     ToastrService,
     EventiListResolver,
     EventRouteActivatorService,
+    AuthService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState,
@@ -46,6 +48,7 @@ import {LoginComponent} from './user/login.component';
 })
 export class AppModule { }
 
+// tslint:disable-next-line:typedef
 export function checkDirtyState(component: CreateEventComponent) {
   if (component.isDirty) {
     return window.confirm('You have not saved this event, do you really want to cancel?');

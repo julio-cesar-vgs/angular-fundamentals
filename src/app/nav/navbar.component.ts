@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {AuthService} from '../user/auth.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -18,9 +19,13 @@ import {Component} from '@angular/core';
         display: none
       }
     }
-    li > a.active {color: #F97924;}
+
+    li > a.active {
+      color: #F97924;
+    }
   `]
 })
 export class NavBarComponent {
-
+  constructor(public auth: AuthService) {
+  }
 }

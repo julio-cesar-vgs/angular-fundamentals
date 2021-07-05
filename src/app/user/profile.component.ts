@@ -46,9 +46,10 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.auth.currentUser.firstName);
     this.firstName = new FormControl(
-      this.auth.currentUser.firstName, Validators.required);
+      this.auth.currentUser.firstName, [Validators.required, Validators.pattern('[a-azA-Z].*')]);
     this.lastName = new FormControl(
-      this.auth.currentUser.lastname, Validators.required);
+      this.auth.currentUser.lastname, [
+            Validators.required, Validators.minLength(4), Validators.maxLength(15)]);
     this.profileForm = new FormGroup({
       firstName: this.firstName,
       lastName: this.lastName,

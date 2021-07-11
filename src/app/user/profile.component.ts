@@ -19,7 +19,7 @@ import {Router} from '@angular/router';
     .error ::-webkit-input-placeholder {
       color: #999
     }
-
+ 
     .error ::-moz-placeholder {
       color: #999
     }

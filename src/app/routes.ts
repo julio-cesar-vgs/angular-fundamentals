@@ -6,7 +6,7 @@ import {
   EventDetailsComponent,
   EventRouteActivatorService,
   EventiListResolver,
-  EventsListComponent
+  EventsListComponent, CreateSessionComponent
 } from './events';
 
 export const appRoutes: Routes = [
@@ -30,6 +30,9 @@ export const appRoutes: Routes = [
   },
   {
     path: '404', component: Error404Component
+  },
+  {
+    path: 'events/session/new', component: CreateSessionComponent
   },
   {
     // nova forma de carregar uma fota, de forma dinamica

@@ -31,11 +31,4 @@ export class EventsListComponent implements OnInit {
   handleThumbnailClick(eventName): void {
     this.toastr.success(eventName);
   }
-
-
-  handleEventClicked(data): void {
-    console.log(data);
-  }
-
-
 }

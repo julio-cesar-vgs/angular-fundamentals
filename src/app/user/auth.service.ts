@@ -16,7 +16,6 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    console.log(this.currentUser)
     return !!this.currentUser;
   }
   updateCurrentUser(firstName, lastName: string): void {

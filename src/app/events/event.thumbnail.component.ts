@@ -9,10 +9,10 @@ declare let toastr;
     selector: 'events-thumbnail',
     template: `
     <div [routerLink]="['/events',event.id]" class="well hoverwell thumbnail">
-        <h2>{{event?.name}}</h2>
-        <h2>Date: {{event?.date}}</h2>
+        <h2>{{event?.name | uppercase}}</h2>
+        <h2>Date: {{event?.date| date: 'dd/MM/yyyy'}}</h2>
         <h2>Time: {{event?.time}}</h2>
-        <h2>Price: \${{event?.price}}</h2>
+        <h2>Price: {{event?.price | currency : 'R$ '}}</h2>
         <div [ngStyle]="getStartTimeStyle()" [ngSwitch]="event?.time">
             Time: {{event?.time}}
             <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
@@ -20,7 +20,7 @@ declare let toastr;
             <span *ngSwitchDefault>(Normal Start)</span>
 
         </div>
-        <h2>Price: \${{event?.price}}</h2>
+        <h2>Price: {{event?.price | currency : 'R$ '}}</h2>
         <div *ngIf="event?.location">
             <span>Location: {{event?.location?.address}}</span>
 
@@ -45,10 +45,7 @@ export class EventThumbnailComponent {
     //     this.eventClick.emit(this.eventClick.name);
     // }
 
-  // tslint:disable-next-line:typedef
-    logFoo() {
-        console.log('foo');
-    }
+
 
     getStartTimeStyle(): any {
         if (this.event && this.event.time === '8:00 am') {

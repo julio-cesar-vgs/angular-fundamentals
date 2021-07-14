@@ -10,18 +10,18 @@ import {
   EventRouteActivatorService,
   EventiListResolver,
   CreateEventComponent,
-  SessionListComponent
-} from './events/index' ;
+  SessionListComponent,
+  CreateSessionComponent
+} from './events' ;
 
 import {NavBarComponent} from './nav/navbar.component';
 import {Error404Component} from './errors/404.component';
 import {EventsAppComponent} from './events-app.component';
 import {RouterModule} from '@angular/router';
 import {appRoutes} from './routes';
-import {LoginComponent} from './user/login.component';
 import {AuthService} from './user/auth.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {CreateSessionComponent} from './events/event-details/create-session/create-session.component';
+import {CollapsibleWellComponent} from './common/collapsible-well.component';
 @NgModule({
   declarations: [
     EventsAppComponent,
@@ -32,7 +32,8 @@ import {CreateSessionComponent} from './events/event-details/create-session/crea
     CreateEventComponent,
     Error404Component,
     CreateSessionComponent,
-    SessionListComponent
+    SessionListComponent,
+    CollapsibleWellComponent
   ],
   imports: [
     BrowserModule,

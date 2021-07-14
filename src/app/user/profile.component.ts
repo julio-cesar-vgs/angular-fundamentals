@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Form, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from './auth.service';
 import {Router} from '@angular/router';
 
@@ -19,7 +19,7 @@ import {Router} from '@angular/router';
     .error ::-webkit-input-placeholder {
       color: #999
     }
- 
+
     .error ::-moz-placeholder {
       color: #999
     }
@@ -44,7 +44,6 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.auth.currentUser.firstName);
     this.firstName = new FormControl(
       this.auth.currentUser.firstName, [Validators.required, Validators.pattern('[a-azA-Z].*')]);
     this.lastName = new FormControl(

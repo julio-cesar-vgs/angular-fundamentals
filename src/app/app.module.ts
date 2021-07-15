@@ -11,7 +11,8 @@ import {
   EventiListResolver,
   CreateEventComponent,
   SessionListComponent,
-  CreateSessionComponent
+  CreateSessionComponent,
+  DurationPipe
 } from './events' ;
 
 import {NavBarComponent} from './nav/navbar.component';
@@ -33,7 +34,8 @@ import {CollapsibleWellComponent} from './common/collapsible-well.component';
     Error404Component,
     CreateSessionComponent,
     SessionListComponent,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {ISession} from '../../shared';
 
 @Component({
@@ -15,7 +15,7 @@ export class SessionListComponent implements OnChanges {
   constructor() {
   }
 
-  ngOnChanges() {
+  ngOnChanges(): void {
     if (this.session) {
       this.filterSessions(this.filterBy);
       this.sortBy === 'name' ? this.visibleSessions.sort(this.sortByNameAsc) :

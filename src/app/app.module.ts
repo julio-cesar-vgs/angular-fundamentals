@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { ToastrService } from './common/toastr.service';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
 import {
   EventsListComponent,
@@ -23,6 +22,12 @@ import {appRoutes} from './routes';
 import {AuthService} from './user/auth.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CollapsibleWellComponent} from './common/collapsible-well.component';
+import {Toastr, TOASTR_TOKEN} from './common/toastr.service';
+
+//let toastr = window['toastr'];
+
+declare let toastr: Toastr;
+
 @NgModule({
   declarations: [
     EventsAppComponent,
@@ -45,9 +50,9 @@ import {CollapsibleWellComponent} from './common/collapsible-well.component';
   ],
   providers: [
     EventService,
-    ToastrService,
     EventiListResolver,
     EventRouteActivatorService,
+    { provide: TOASTR_TOKEN, useValue: toastr},
     AuthService,
     {
       provide: 'canDeactivateCreateEvent',
@@ -57,7 +62,8 @@ import {CollapsibleWellComponent} from './common/collapsible-well.component';
 
   bootstrap: [EventsAppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
 
 // tslint:disable-next-line:typedef
 export function checkDirtyState(component: CreateEventComponent) {

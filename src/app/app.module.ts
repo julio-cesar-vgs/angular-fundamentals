@@ -24,6 +24,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CollapsibleWellComponent} from './common/collapsible-well.component';
 import {Toastr, TOASTR_TOKEN} from './common/toastr.service';
 
+declare let toastr: Toastr;
+
 @NgModule({
   declarations: [
     EventsAppComponent,

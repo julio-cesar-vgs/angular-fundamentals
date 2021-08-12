@@ -1,13 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {IEvent} from './event.model';
+import {IEvent, ISession} from './event.model';
 import * as Events from 'events';
+import {EventEmitter} from 'protractor';
 
 @Injectable()
 export class EventService {
 
-
-  // tslint:disable-next-line:typedef
   getEvents(): Observable<IEvent[]> {
     const subject = new Subject<IEvent[]>();
     setTimeout(() => {
@@ -29,9 +28,35 @@ export class EventService {
     EVENTS.push(event);
   }
 
-  updateEvent(event: IEvent) {
+  updateEvent(event: IEvent): void {
     const index = EVENTS.findIndex(x => x.id = event.id);
     EVENTS[index] = event;
+  }
+
+  searchSessions(searchTerm: string): Subject<ISession[]>{
+    const term = searchTerm.toLocaleLowerCase();
+    const result: ISession[] = [];
+
+    EVENTS.forEach(e => {
+      let matchingSessions = e.sessions.filter(s => {
+        return s.name.toLocaleLowerCase().indexOf(term) > -1;
+      });
+      // we also want to add event id to all filtered sessions
+      matchingSessions = matchingSessions.map((session: any) => {
+        session.eventId = e.id;
+        return session;
+      });
+      result.push(...matchingSessions);
+      // result = result.concat(matchingSessions);
+    });
+
+    const subject = new Subject<ISession[]>();
+    setTimeout(() => {
+        subject.next(result),
+          subject.complete();
+      },
+      100);
+    return subject;
   }
 }
 
